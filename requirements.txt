@@ -1,0 +1,11 @@
+streamlit
+langchain
+chromadb
+openai
+pdfplumber
+yfinance
+plotly
+pandas
+requests
+python-dotenv
+sentence-transformers
