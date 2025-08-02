@@ -1,8 +1,7 @@
 streamlit
 langchain
-langchain-community
 langchain-openai
 chromadb
 pdfplumber
+yfinance
 python-dotenv
-requests
