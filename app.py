@@ -1,4 +1,6 @@
 import streamlit as st
+openai_api_key = st.secrets["OPENAI_API_KEY"]
+news_api_key = st.secrets["NEWS_API_KEY"]
 from rag_pipeline import get_rag_response
 from utils.market_data import get_stock_data, plot_stock_chart
 from utils.risk_model import calculate_risk
