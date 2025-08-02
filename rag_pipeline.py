@@ -1,18 +1,9 @@
-import os
-from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import Chroma
-from langchain.chains import RetrievalQA
-from langchain.chat_models import ChatOpenAI
-from dotenv import load_dotenv
 
-load_dotenv()
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
 
 def get_rag_response(query):
-    embeddings = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
-    db = Chroma(persist_directory="chroma_db", embedding_function=embeddings)
-
-    retriever = db.as_retriever()
-    llm = ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"), model="gpt-3.5-turbo")
-    qa = RetrievalQA.from_chain_type(llm=llm, retriever=retriever)
-
-    return qa.run(query)
+    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
+    docs = db.similarity_search(query, k=3)
+    return "\n\n".join([doc.page_content for doc in docs])
