@@ -7,3 +7,4 @@ pdfplumber
 yfinance
 python-dotenv
 plotly
+faiss-cpu
