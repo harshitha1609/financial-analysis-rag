@@ -6,3 +6,4 @@ chromadb
 pdfplumber
 yfinance
 python-dotenv
+plotly
