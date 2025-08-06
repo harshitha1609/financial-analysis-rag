@@ -6,8 +6,13 @@
 1)Activate your virtual environment:
   cd C:\Users\harshitha\financial-rag
   .\venv\Scripts\activate
+
+
+
+
 2)Run your app:
   python -m streamlit run app.py
+
 
 
 
